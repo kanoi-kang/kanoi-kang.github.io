@@ -1,0 +1,180 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>kanoi的小窝</title><meta name="author" content="kanoi"><meta name="copyright" content="kanoi"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="一个人的世界，很安静，安静的可以听到自己的呼吸声和心跳声">
+<meta property="og:type" content="website">
+<meta property="og:title" content="kanoi的小窝">
+<meta property="og:url" content="http://example.com/index.html">
+<meta property="og:site_name" content="kanoi的小窝">
+<meta property="og:description" content="一个人的世界，很安静，安静的可以听到自己的呼吸声和心跳声">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://example.com/img/OIP-C.jpg">
+<meta property="article:author" content="kanoi">
+<meta property="article:tag" content="熬夜 狂热 篮球 二次元">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/img/OIP-C.jpg"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="http://example.com/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css"><script>
+    (() => {
+      
+    const saveToLocal = {
+      set: (key, value, ttl) => {
+        if (!ttl) return
+        const expiry = Date.now() + ttl * 86400000
+        localStorage.setItem(key, JSON.stringify({ value, expiry }))
+      },
+      get: key => {
+        const itemStr = localStorage.getItem(key)
+        if (!itemStr) return undefined
+        const { value, expiry } = JSON.parse(itemStr)
+        if (Date.now() > expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return value
+      }
+    }
+
+    window.btf = {
+      saveToLocal,
+      getScript: (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        Object.entries(attr).forEach(([key, val]) => script.setAttribute(key, val))
+        script.onload = script.onreadystatechange = () => {
+          if (!script.readyState || /loaded|complete/.test(script.readyState)) resolve()
+        }
+        script.onerror = reject
+        document.head.appendChild(script)
+      }),
+      getCSS: (url, id) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onload = link.onreadystatechange = () => {
+          if (!link.readyState || /loaded|complete/.test(link.readyState)) resolve()
+        }
+        link.onerror = reject
+        document.head.appendChild(link)
+      }),
+      addGlobalFn: (key, fn, name = false, parent = window) => {
+        if (!false && key.startsWith('pjax')) return
+        const globalFn = parent.globalFn || {}
+        globalFn[key] = globalFn[key] || {}
+        globalFn[key][name || Object.keys(globalFn[key]).length] = fn
+        parent.globalFn = globalFn
+      }
+    }
+  
+      
+      const activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      const activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+
+      btf.activateDarkMode = activateDarkMode
+      btf.activateLightMode = activateLightMode
+
+      const theme = saveToLocal.get('theme')
+    
+          theme === 'dark' ? activateDarkMode() : theme === 'light' ? activateLightMode() : null
+        
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        document.documentElement.classList.toggle('hide-aside', asideStatus === 'hide')
+      }
+    
+      
+    const detectApple = () => {
+      if (/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)) {
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+  
+    })()
+  </script><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false,"highlightFullpage":false,"highlightMacStyle":false},
+  copy: {
+    success: '复制成功',
+    error: '复制失败',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'null',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: false,
+  islazyloadPlugin: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'kanoi的小窝',
+  isHighlightShrink: false,
+  isToc: false,
+  pageType: 'home'
+}</script><link rel="stylesheet" href="/css/font.css"><meta name="generator" content="Hexo 7.3.0"></head><body><div id="web_bg" style="background-image: url(/img/bg1.jpg);"></div><div class="page" id="body-wrap"><header class="full_page" id="page-header" style="background-image: url(/img/bg.jpg);"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/"><span class="site-name">kanoi的小窝</span></a></span><div id="menus"></div></nav><div id="site-info"><h1 id="site-title">kanoi的小窝</h1></div><div id="scroll-down"><i class="fas fa-angle-down scroll-down-effects"></i></div></header><main class="layout" id="content-inner"><div class="recent-posts nc" id="recent-posts"><div class="recent-post-items"><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2025/04/14/SpringBoot-AOP/" title="AOP面向切面编程，反射，注解">AOP面向切面编程，反射，注解</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2025-04-14T08:03:34.262Z" title="发表于 2025-04-14 16:03:34">2025-04-14</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/SpringBoot/">SpringBoot</a></span></div><div class="content">AOP面向切面编程定义：AOP （Aspect Orient Programming）,直译过来就是 面向切面编程,AOP 是一种编程思想，是面向对象编程（OOP）的一种补充。面向切面编程，实现在不修改源代码的情况下给程序动态统一添加额外功能的一种技术。 作用：AOP 采取横向抽取机制（动态代理），取代了传统纵向继承机制的重复性代码，其应用主要体现在事务处理、日志管理、权限控制、异常处理等方面。 主要作用是分离功能性需求和非功能性需求，使开发人员可以集中处理某一个关注点或者横切逻辑，减少对业务代码的侵入，增强代码的可读性和可维护性。 简单的说，AOP...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2025/03/16/%E6%9C%80%E9%95%BF%E5%85%AC%E5%85%B1%E5%AD%90%E5%BA%8F%E5%88%97/" title="最长公共子序列（Longest Common Subsequent）">最长公共子序列（Longest Common Subsequent）</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2025-03-16T12:10:27.651Z" title="发表于 2025-03-16 20:10:27">2025-03-16</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E7%AE%97%E6%B3%95/">算法</a></span></div><div class="content">最长公共子序列（Longest Common Subsequent）1.定义：D[i][j]&#x3D;S1 前i个字符与S2前j个字符的LCS 2.分解  ① D[i][j]&#x3D;1+D[i-1][j-1] ​			② D[i][j]&#x3D;max(D[i-1][j],D[i][j-1]) 3.子问题 D[0][0]&#x3D;0,D[0][j]&#x3D;0,D[i][0]&#x3D;0 求最长公共子序列长度代码示例1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253545556#include&lt;bits/stdc++.h&gt;using namespace std;char a[1001], b[1001];int dp[1001][1001], len1, len2;void lcs(int i,int j)&#123;    for(i=1; i&lt;=len1; i++)    &#123;       ...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2025/03/16/%E6%9C%80%E8%BF%91%E5%85%AC%E5%85%B1%E7%A5%96%E5%85%88/" title="最近公共祖先（Lowest Common  Ancestor）">最近公共祖先（Lowest Common  Ancestor）</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2025-03-16T12:10:27.649Z" title="发表于 2025-03-16 20:10:27">2025-03-16</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E7%AE%97%E6%B3%95/">算法</a></span></div><div class="content">最近公共祖先（Lowest Common  Ancestor）2^20^&#x3D;1&lt;&lt;20$\approx$ 1e6&#x3D;100万 12345678910111213141516171819202122232425262728#include&lt;bits/stdc++.h&gt;using namespace std;const int N=5e5+10;int n,s,a,b;vector&lt;int&gt;e[N];int depth[N],fa[N][20];void dfs(int root,int father)&#123;    depth[root]=depth[father]+1;    //向上跳1,2,4……步的祖先节点    fa[root][0]=father;    for(int i=1;i&lt;=19;i++)        fa[root][i]=fa[fa[root][i-1]][i-1];    for(int v:e[root])        if(v!=father)...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2025/03/16/%E5%9B%BE%E8%AE%BA/" title="图论">图论</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2025-03-16T12:10:27.647Z" title="发表于 2025-03-16 20:10:27">2025-03-16</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E7%AE%97%E6%B3%95/">算法</a></span></div><div class="content">图论一、回溯法1.1 八皇后问题问题描述：八皇后问题是一个以国际象棋为背景的问题：如何能够在8×8的国际象棋棋盘上放置八个皇后，使得任何一个皇后都无法直接吃掉其他的皇后？为了达到此目的，任两个皇后都不能处于同一条横行、纵行或斜线上。八皇后问题可以推广为更一般的n皇后摆放问题：这时棋盘的大小变为n×n，而皇后个数也变成n。当且仅当n &#x3D; 1或n ≥ 4时问题有解。  题解代码：  二维版本&#x2F;朴素版：n&#x3D;9时，Runtime&#x3D;4.5s  123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960616263646566#include&lt;bits/stdc++.h&gt;const int n=8;//n表示棋盘边长using namespace std;//g:棋盘 vis[]:标记是否访问过这一列  cnt:计数器，有多少种满足条件的方案 int...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2025/03/16/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0_2024.9.24/" title="算法学习笔记_2024.9.24">算法学习笔记_2024.9.24</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2025-03-16T12:10:27.642Z" title="发表于 2025-03-16 20:10:27">2025-03-16</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E7%AE%97%E6%B3%95/">算法</a></span></div><div class="content">...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2025/03/16/%E6%AC%A7%E6%8B%89%E7%AD%9B/" title="线性素数筛">线性素数筛</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2025-03-16T12:10:27.638Z" title="发表于 2025-03-16 20:10:27">2025-03-16</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E7%AE%97%E6%B3%95/">算法</a></span></div><div class="content">素数定义：素数（质数）是指在大于1的自然数中，除了1和它本身以外不再有其他因数的自然数。 素数筛算法1、朴素筛法1.1、试除法 ，时间复杂度O(n^2^);1234567891011121314151617181920212223242526272829#include&lt;bits/stdc++.h&gt;#include&lt;time.h&gt;using namespace std;clock_t start,ed;const int N=1e6;bool isprime(int n)&#123;	if(n&lt;2)return false;	for(int i=2;i&lt;=n;i++)&#123;		if(n%i==0)return false;	&#125;	return true;&#125;int count_prime(int n)&#123;    int cnt=0;    for(int i=2;i&lt;=n;i++)&#123;        if(isprime(i))&#123;            cnt++;       ...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2025/03/16/%E7%BA%A2%E9%BB%91%E6%A0%91/" title="红黑树(Red-black tree)">红黑树(Red-black tree)</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2025-03-16T12:10:27.636Z" title="发表于 2025-03-16 20:10:27">2025-03-16</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E7%AE%97%E6%B3%95/">算法</a></span></div><div class="content">红黑树(Red-black tree)一、性质1.红黑树是一种自平衡的二叉查找树2.1972年出现，当时叫做平衡二叉B树。后来，1978年被修改为如今的“红黑树”3.它是一种特殊的二叉查找树，红黑树的每一个节点上都有存储位表示节点的颜色4.每一个节点可以是红或者__黑__；红黑树不是高度平衡的，它的平衡是通过“红黑规则”进行实现的 二、红黑规则1.每一个节点或是红色的，或者是黑色的2.根节点必须是黑色3.如果一个节点没有子节点或者父节点，则该节点相应的指针属性值为Nil，这些Nil视为叶节点，每个叶节点（Nil）是黑色的4.如果某一个节点是红色，那么它的子节点必须是黑色（不能出现两个红色节点相连的情况）5.对于每一个节点，从该节点到其所有后代叶节点的简单路径上，均包含相同数目的黑色节点 三、添加节点规则 </div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2025/03/16/java%E7%AE%97%E6%B3%95%E7%AB%9E%E8%B5%9B%E6%A8%A1%E7%89%88/" title="java算法竞赛模版">java算法竞赛模版</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2025-03-16T12:10:27.634Z" title="发表于 2025-03-16 20:10:27">2025-03-16</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E7%AE%97%E6%B3%95/">算法</a></span></div><div class="content">java算法竞赛模版12345678910111213141516171819202122232425262728293031323334import java.io.*;import java.util.*;public class Main&#123;    /*定义全局变量*/    /*解决函数*/    void solve()&#123;    &#125;    /*主函数*/    public static void main(String[] args) throws IOException &#123;         StreamTokenizer cin = new StreamTokenizer(new BufferedReader(new InputStreamReader(System.in)));		PrintWriter out = new PrintWriter(new OutputStreamWriter(System.out));		//in.nextToken()    ：解析下一个标记		//in.nval          ...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2025/03/16/Javaweb%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%20%E7%AC%AC%E4%B8%80%E5%A4%A9/" title="Javaweb学习笔记	第一天">Javaweb学习笔记	第一天</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2025-03-16T12:10:27.631Z" title="发表于 2025-03-16 20:10:27">2025-03-16</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/Javaweb/">Javaweb</a></span></div><div class="content">Javaweb学习笔记	第一天 回顾了VUE语法，包括vue-if，vue-for，vue-on等  了解了前端工程化的ajax工具，所谓ajax即Asynchronous Javascript And XML，主要是浏览器和服务器之间的一种异步通信方式。（XML是前后端传输数据的一种形式，现在不常见，多用JSON格式）异步通信就是在不刷新页面的同时，对页面的某部分进行更新。  Ajax的执行步骤如下： 1.创建一个xhr对象 2.使用xhr的readystatechange属性，判断Ajax的状态码 3.判断HTTP的状态码 4.xhr.open()准备发送请求 5.xhr.send()发送请求  但现在Ajax已经不常用，多使用Axios2。在使用Axios2之前需要从对应的官网下载一份“axios-0.18.0.js”之类的JSON格式文件存到项目的JS文件夹目录下。   axios示例代码：1234567891011121314151617181920&lt;/script&gt;function get()&#123;    //通过axios发送异步请求-get  ...</div></div></div></div><nav id="pagination"><div class="pagination"><span class="page-number current">1</span></div></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info text-center"><div class="avatar-img"><img src="/img/OIP-C.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info-name">kanoi</div><div class="author-info-description">一个人的世界，很安静，安静的可以听到自己的呼吸声和心跳声</div><div class="site-data"><a href="/archives/"><div class="headline">文章</div><div class="length-num">9</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">7</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">3</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/xxxxxx"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2025/04/14/SpringBoot-AOP/" title="AOP面向切面编程，反射，注解">AOP面向切面编程，反射，注解</a><time datetime="2025-04-14T08:03:34.262Z" title="发表于 2025-04-14 16:03:34">2025-04-14</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2025/03/16/%E6%9C%80%E9%95%BF%E5%85%AC%E5%85%B1%E5%AD%90%E5%BA%8F%E5%88%97/" title="最长公共子序列（Longest Common Subsequent）">最长公共子序列（Longest Common Subsequent）</a><time datetime="2025-03-16T12:10:27.651Z" title="发表于 2025-03-16 20:10:27">2025-03-16</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2025/03/16/%E6%9C%80%E8%BF%91%E5%85%AC%E5%85%B1%E7%A5%96%E5%85%88/" title="最近公共祖先（Lowest Common  Ancestor）">最近公共祖先（Lowest Common  Ancestor）</a><time datetime="2025-03-16T12:10:27.649Z" title="发表于 2025-03-16 20:10:27">2025-03-16</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2025/03/16/%E5%9B%BE%E8%AE%BA/" title="图论">图论</a><time datetime="2025-03-16T12:10:27.647Z" title="发表于 2025-03-16 20:10:27">2025-03-16</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2025/03/16/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0_2024.9.24/" title="算法学习笔记_2024.9.24">算法学习笔记_2024.9.24</a><time datetime="2025-03-16T12:10:27.642Z" title="发表于 2025-03-16 20:10:27">2025-03-16</time></div></div></div></div><div class="card-widget card-categories"><div class="item-headline">
+            <i class="fas fa-folder-open"></i>
+            <span>分类</span>
+            
+          </div>
+          <ul class="card-category-list" id="aside-cat-list">
+            <li class="card-category-list-item "><a class="card-category-list-link" href="/categories/Javaweb/"><span class="card-category-list-name">Javaweb</span><span class="card-category-list-count">1</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/SpringBoot/"><span class="card-category-list-name">SpringBoot</span><span class="card-category-list-count">1</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/%E7%AE%97%E6%B3%95/"><span class="card-category-list-name">算法</span><span class="card-category-list-count">7</span></a></li>
+          </ul></div><div class="card-widget card-tags"><div class="item-headline"><i class="fas fa-tags"></i><span>标签</span></div><div class="card-tag-cloud"><a href="/tags/%E5%9B%BE%E8%AE%BA/" style="font-size: 1.1em; color: #999">图论</a> <a href="/tags/%E6%9C%80%E9%95%BF%E5%85%AC%E5%85%B1%E5%AD%90%E5%BA%8F%E5%88%97LCS/" style="font-size: 1.1em; color: #999">最长公共子序列LCS</a> <a href="/tags/%E7%B4%A0%E6%95%B0/" style="font-size: 1.1em; color: #999">素数</a> <a href="/tags/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" style="font-size: 1.1em; color: #999">算法学习笔记</a> <a href="/tags/%E7%BA%A2%E9%BB%91%E6%A0%91/" style="font-size: 1.1em; color: #999">红黑树</a> <a href="/tags/%E6%9C%80%E8%BF%91%E5%85%AC%E5%85%B1%E7%A5%96%E5%85%88LCA/" style="font-size: 1.1em; color: #999">最近公共祖先LCA</a> <a href="/tags/SpringBoot/" style="font-size: 1.1em; color: #999">SpringBoot</a></div></div><div class="card-widget card-archives">
+    <div class="item-headline">
+      <i class="fas fa-archive"></i>
+      <span>归档</span>
+      
+    </div>
+  
+    <ul class="card-archive-list">
+      
+        <li class="card-archive-list-item">
+          <a class="card-archive-list-link" href="/archives/2025/04/">
+            <span class="card-archive-list-date">
+              四月 2025
+            </span>
+            <span class="card-archive-list-count">1</span>
+          </a>
+        </li>
+      
+        <li class="card-archive-list-item">
+          <a class="card-archive-list-link" href="/archives/2025/03/">
+            <span class="card-archive-list-date">
+              三月 2025
+            </span>
+            <span class="card-archive-list-count">8</span>
+          </a>
+        </li>
+      
+    </ul>
+  </div><div class="card-widget card-webinfo"><div class="item-headline"><i class="fas fa-chart-line"></i><span>网站信息</span></div><div class="webinfo"><div class="webinfo-item"><div class="item-name">文章数目 :</div><div class="item-count">9</div></div><div class="webinfo-item"><div class="item-name">本站访客数 :</div><div class="item-count" id="busuanzi_value_site_uv"><i class="fa-solid fa-spinner fa-spin"></i></div></div><div class="webinfo-item"><div class="item-name">本站总浏览量 :</div><div class="item-count" id="busuanzi_value_site_pv"><i class="fa-solid fa-spinner fa-spin"></i></div></div><div class="webinfo-item"><div class="item-name">最后更新时间 :</div><div class="item-count" id="last-push-date" data-lastPushDate="2025-04-14T08:49:52.723Z"><i class="fa-solid fa-spinner fa-spin"></i></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2019 - 2025 By kanoi</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo 7.3.0</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly 5.3.5</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="darkmode" type="button" title="日间和夜间模式切换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><div class="js-pjax"></div><div class="aplayer no-destroy" data-id="8199540985" data-server="netease" data-type="playlist" data-fixed="true" data-mini="true" data-listFolded="false" data-order="random" data-preload="auto" data-autoplay="true" muted></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.js"></script><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/metingjs/dist/Meting.min.js"></script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>

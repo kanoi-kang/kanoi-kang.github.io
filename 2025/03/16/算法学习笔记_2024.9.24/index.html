@@ -1,0 +1,181 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>算法学习笔记_2024.9.24 | kanoi的小窝</title><meta name="author" content="kanoi"><meta name="copyright" content="kanoi"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="算法学习笔记_2024.9.24今天回顾了DFS和BFS模版题，发现了一个小问题：vector建图的时候有以下几种情况需要搞清楚：  std::vector&lt;vector&lt;int&gt;&gt;G;&#x2F;&#x2F;std::vector&lt;int&gt;G[MAXN]; 1234以上两种定义方式等价，前者是一维和二维大小都不定，后者是建立一维大小固定为MAXN的vector\&lt;int&amp;g">
+<meta property="og:type" content="article">
+<meta property="og:title" content="算法学习笔记_2024.9.24">
+<meta property="og:url" content="http://example.com/2025/03/16/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0_2024.9.24/index.html">
+<meta property="og:site_name" content="kanoi的小窝">
+<meta property="og:description" content="算法学习笔记_2024.9.24今天回顾了DFS和BFS模版题，发现了一个小问题：vector建图的时候有以下几种情况需要搞清楚：  std::vector&lt;vector&lt;int&gt;&gt;G;&#x2F;&#x2F;std::vector&lt;int&gt;G[MAXN]; 1234以上两种定义方式等价，前者是一维和二维大小都不定，后者是建立一维大小固定为MAXN的vector\&lt;int&amp;g">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://example.com/img/OIP-C.jpg">
+<meta property="article:published_time" content="2025-03-16T12:10:27.642Z">
+<meta property="article:modified_time" content="2025-03-16T12:20:06.455Z">
+<meta property="article:author" content="kanoi">
+<meta property="article:tag" content="算法学习笔记">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/img/OIP-C.jpg"><script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "算法学习笔记_2024.9.24",
+  "url": "http://example.com/2025/03/16/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0_2024.9.24/",
+  "image": "http://example.com/img/OIP-C.jpg",
+  "datePublished": "2025-03-16T12:10:27.642Z",
+  "dateModified": "2025-03-16T12:20:06.455Z",
+  "author": [
+    {
+      "@type": "Person",
+      "name": "kanoi",
+      "url": "http://example.com/"
+    }
+  ]
+}</script><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="http://example.com/2025/03/16/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0_2024.9.24/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css"><script>
+    (() => {
+      
+    const saveToLocal = {
+      set: (key, value, ttl) => {
+        if (!ttl) return
+        const expiry = Date.now() + ttl * 86400000
+        localStorage.setItem(key, JSON.stringify({ value, expiry }))
+      },
+      get: key => {
+        const itemStr = localStorage.getItem(key)
+        if (!itemStr) return undefined
+        const { value, expiry } = JSON.parse(itemStr)
+        if (Date.now() > expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return value
+      }
+    }
+
+    window.btf = {
+      saveToLocal,
+      getScript: (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        Object.entries(attr).forEach(([key, val]) => script.setAttribute(key, val))
+        script.onload = script.onreadystatechange = () => {
+          if (!script.readyState || /loaded|complete/.test(script.readyState)) resolve()
+        }
+        script.onerror = reject
+        document.head.appendChild(script)
+      }),
+      getCSS: (url, id) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onload = link.onreadystatechange = () => {
+          if (!link.readyState || /loaded|complete/.test(link.readyState)) resolve()
+        }
+        link.onerror = reject
+        document.head.appendChild(link)
+      }),
+      addGlobalFn: (key, fn, name = false, parent = window) => {
+        if (!false && key.startsWith('pjax')) return
+        const globalFn = parent.globalFn || {}
+        globalFn[key] = globalFn[key] || {}
+        globalFn[key][name || Object.keys(globalFn[key]).length] = fn
+        parent.globalFn = globalFn
+      }
+    }
+  
+      
+      const activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      const activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+
+      btf.activateDarkMode = activateDarkMode
+      btf.activateLightMode = activateLightMode
+
+      const theme = saveToLocal.get('theme')
+    
+          theme === 'dark' ? activateDarkMode() : theme === 'light' ? activateLightMode() : null
+        
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        document.documentElement.classList.toggle('hide-aside', asideStatus === 'hide')
+      }
+    
+      
+    const detectApple = () => {
+      if (/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)) {
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+  
+    })()
+  </script><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false,"highlightFullpage":false,"highlightMacStyle":false},
+  copy: {
+    success: '复制成功',
+    error: '复制失败',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'null',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: false,
+  islazyloadPlugin: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '算法学习笔记_2024.9.24',
+  isHighlightShrink: false,
+  isToc: true,
+  pageType: 'post'
+}</script><link rel="stylesheet" href="/css/font.css"><meta name="generator" content="Hexo 7.3.0"></head><body><div id="web_bg" style="background-image: url(/img/bg1.jpg);"></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/"><span class="site-name">kanoi的小窝</span></a><a class="nav-page-title" href="/"><span class="site-name">算法学习笔记_2024.9.24</span></a></span><div id="menus"></div></nav><div id="post-info"><h1 class="post-title">算法学习笔记_2024.9.24</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2025-03-16T12:10:27.642Z" title="发表于 2025-03-16 20:10:27">2025-03-16</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2025-03-16T12:20:06.455Z" title="更新于 2025-03-16 20:20:06">2025-03-16</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E7%AE%97%E6%B3%95/">算法</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title=""><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">浏览量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="container post-content" id="article-container"><h3 id="算法学习笔记-2024-9-24"><a href="#算法学习笔记-2024-9-24" class="headerlink" title="算法学习笔记_2024.9.24"></a>算法学习笔记_2024.9.24</h3><p>今天回顾了DFS和BFS模版题，发现了一个小问题：vector建图的时候有以下几种情况需要搞清楚：</p>
+<ul>
+<li><pre><code class="language-cpp">std::vector&lt;vector&lt;int&gt;&gt;G;//std::vector&lt;int&gt;G[MAXN];
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">以上两种定义方式等价，前者是一维和二维大小都不定，后者是建立一维大小固定为MAXN的vector\&lt;int&gt;数组,**但是**在实际应用中前者如果没有像</span><br><span class="line">```cpp</span><br><span class="line">std::vector&lt;vector&lt;int&gt;&gt;G(MAXN);</span><br></pre></td></tr></table></figure>
+这样在定义时就规定vector的大小，那么就会出现导致`G`的索引超出了`visited`数组能够表示的范围，从而导致代码运行超时的问题。**具体原因**是：这一行声明了一个二维`vector`，但是没有指定大小。在C++中，**如果不指定大小**，***`vector`默认是空的。***这意味着在`main`函数中，`G[u].push_back(v);`可能会访问一个不存在的`vector`，从而导致未定义行为。
+
+另补充一个在第三十五次CCF认证时遇到的一个坑，对于带有空格字符串的读入，C++的标准输入`cin`具有无法读入空格的弊端，所以可以使用`getline(cin,s)`;来实现读入空格的效果，但是这样`getline`函数会将输入缓冲区的‘\n’换行符也读取走会影响后续程序的`cin`正常读入。
+
+以下是AI解释：
+
+&#39;&#39;如果你混合使用了 `cin` 的其他提取操作（如 `cin &gt;&gt; var`）和 `getline`，那么未消耗的换行符可能会影响 `getline` 的行为，导致它立即返回而不读取任何数据。&#39;&#39;
+
+**解决方案**：在`getline`后面加一句`getchar()`;为了读取并丢弃输入流中的下一个字符，通常是换行符 `\n`。这通常用于处理 `cin` 与 `getline` 混合使用时可能出现的问题。
+</code></pre>
+</li>
+</ul>
+<p>深搜和光搜代码示例：<a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/P5318">传送门</a></p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;vector&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;queue&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;cstring&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="type">const</span> <span class="type">int</span> MAXN = <span class="number">100010</span>;</span><br><span class="line"></span><br><span class="line">std::vector&lt;vector&lt;<span class="type">int</span>&gt;&gt;G;</span><br><span class="line"><span class="type">int</span> n, m;</span><br><span class="line"><span class="type">bool</span> visited[MAXN];</span><br><span class="line">queue&lt;<span class="type">int</span>&gt; q;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">dfs</span><span class="params">(<span class="type">int</span> x, <span class="type">int</span> cur)</span> </span>&#123;<span class="comment">//x指当前所在的节点，cur指已遍历过的节点个数</span></span><br><span class="line">	visited[x] = <span class="literal">true</span>;<span class="comment">//标记以避免重复访问</span></span><br><span class="line">	cout &lt;&lt; x &lt;&lt; <span class="string">&quot; &quot;</span>;<span class="comment">//输出</span></span><br><span class="line">	<span class="keyword">if</span> (cur == n) <span class="keyword">return</span> ;</span><br><span class="line">	<span class="keyword">for</span> (<span class="type">int</span> i=<span class="number">0</span>; i&lt;G[x].<span class="built_in">size</span>(); i++)</span><br><span class="line">		<span class="keyword">if</span> (!visited[G[x][i]]) <span class="built_in">dfs</span>(G[x][i], cur<span class="number">+1</span>);<span class="comment">//记得要判断是否遍历过</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">bfs</span><span class="params">(<span class="type">int</span> x)</span> </span>&#123;</span><br><span class="line">	<span class="built_in">memset</span>(visited, <span class="literal">false</span>, <span class="built_in">sizeof</span>(visited));<span class="comment">//记得一定要清空</span></span><br><span class="line">	visited[x] = <span class="literal">true</span>;</span><br><span class="line">	q.<span class="built_in">push</span>(x);</span><br><span class="line">	<span class="keyword">while</span> (!q.<span class="built_in">empty</span>()) &#123;</span><br><span class="line">		<span class="type">int</span> v = q.<span class="built_in">front</span>();</span><br><span class="line">		q.<span class="built_in">pop</span>();<span class="comment">//记得要弹出，否则会一直在第一层遍历</span></span><br><span class="line">		cout &lt;&lt; v &lt;&lt; <span class="string">&quot; &quot;</span>;<span class="comment">//输出</span></span><br><span class="line">		<span class="keyword">for</span> (<span class="type">int</span> i=<span class="number">0</span>; i&lt;G[v].<span class="built_in">size</span>(); i++)</span><br><span class="line">			<span class="keyword">if</span> (!visited[G[v][i]]) &#123;</span><br><span class="line">				visited[G[v][i]] = <span class="literal">true</span>;</span><br><span class="line">				q.<span class="built_in">push</span>(G[v][i]);<span class="comment">//记得要入队</span></span><br><span class="line">			&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	cin &gt;&gt; n &gt;&gt; m;</span><br><span class="line">	<span class="keyword">for</span> (<span class="type">int</span> i=<span class="number">1</span>; i&lt;=m; i++) &#123;</span><br><span class="line">		<span class="type">int</span> u, v;</span><br><span class="line">		cin &gt;&gt; u &gt;&gt; v;</span><br><span class="line">		G[u].<span class="built_in">push_back</span>(v);<span class="comment">//标准邻接表建有向图</span></span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">for</span> (<span class="type">int</span> i=<span class="number">1</span>; i&lt;=n; i++) <span class="built_in">sort</span>(G[i].<span class="built_in">begin</span>(), G[i].<span class="built_in">end</span>());<span class="comment">//标准vector排序</span></span><br><span class="line">	<span class="built_in">dfs</span>(<span class="number">1</span>, <span class="number">0</span>);</span><br><span class="line">	cout &lt;&lt; endl;</span><br><span class="line">	<span class="built_in">bfs</span>(<span class="number">1</span>);</span><br><span class="line">	cout &lt;&lt; endl;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;<span class="comment">//完结撒花！</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a href="http://example.com">kanoi</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接: </span><span class="post-copyright-info"><a href="http://example.com/2025/03/16/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0_2024.9.24/">http://example.com/2025/03/16/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0_2024.9.24/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来源 <a href="http://example.com" target="_blank">kanoi的小窝</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">算法学习笔记</a></div><div class="post-share"><div class="social-share" data-image="/img/OIP-C.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><a class="pagination-related" href="/2025/03/16/%E6%AC%A7%E6%8B%89%E7%AD%9B/" title="线性素数筛"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info"><div class="info-1"><div class="info-item-1">上一篇</div><div class="info-item-2">线性素数筛</div></div><div class="info-2"><div class="info-item-1">素数定义：素数（质数）是指在大于1的自然数中，除了1和它本身以外不再有其他因数的自然数。 素数筛算法1、朴素筛法1.1、试除法 ，时间复杂度O(n^2^);1234567891011121314151617181920212223242526272829#include&lt;bits/stdc++.h&gt;#include&lt;time.h&gt;using namespace std;clock_t start,ed;const int N=1e6;bool isprime(int n)&#123;	if(n&lt;2)return false;	for(int i=2;i&lt;=n;i++)&#123;		if(n%i==0)return false;	&#125;	return true;&#125;int count_prime(int n)&#123;    int cnt=0;    for(int i=2;i&lt;=n;i++)&#123;        if(isprime(i))&#123;            cnt++;       ...</div></div></div></a><a class="pagination-related" href="/2025/03/16/%E5%9B%BE%E8%AE%BA/" title="图论"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-right"><div class="info-1"><div class="info-item-1">下一篇</div><div class="info-item-2">图论</div></div><div class="info-2"><div class="info-item-1">图论一、回溯法1.1 八皇后问题问题描述：八皇后问题是一个以国际象棋为背景的问题：如何能够在8×8的国际象棋棋盘上放置八个皇后，使得任何一个皇后都无法直接吃掉其他的皇后？为了达到此目的，任两个皇后都不能处于同一条横行、纵行或斜线上。八皇后问题可以推广为更一般的n皇后摆放问题：这时棋盘的大小变为n×n，而皇后个数也变成n。当且仅当n &#x3D; 1或n ≥ 4时问题有解。  题解代码：  二维版本&#x2F;朴素版：n&#x3D;9时，Runtime&#x3D;4.5s  123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960616263646566#include&lt;bits/stdc++.h&gt;const int n=8;//n表示棋盘边长using namespace std;//g:棋盘 vis[]:标记是否访问过这一列  cnt:计数器，有多少种满足条件的方案 int...</div></div></div></a></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info text-center"><div class="avatar-img"><img src="/img/OIP-C.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info-name">kanoi</div><div class="author-info-description">一个人的世界，很安静，安静的可以听到自己的呼吸声和心跳声</div><div class="site-data"><a href="/archives/"><div class="headline">文章</div><div class="length-num">9</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">7</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">3</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/xxxxxx"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-2024-9-24"><span class="toc-number">1.</span> <span class="toc-text">算法学习笔记_2024.9.24</span></a></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2025/04/14/SpringBoot-AOP/" title="AOP面向切面编程，反射，注解">AOP面向切面编程，反射，注解</a><time datetime="2025-04-14T08:03:34.262Z" title="发表于 2025-04-14 16:03:34">2025-04-14</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2025/03/16/%E6%9C%80%E9%95%BF%E5%85%AC%E5%85%B1%E5%AD%90%E5%BA%8F%E5%88%97/" title="最长公共子序列（Longest Common Subsequent）">最长公共子序列（Longest Common Subsequent）</a><time datetime="2025-03-16T12:10:27.651Z" title="发表于 2025-03-16 20:10:27">2025-03-16</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2025/03/16/%E6%9C%80%E8%BF%91%E5%85%AC%E5%85%B1%E7%A5%96%E5%85%88/" title="最近公共祖先（Lowest Common  Ancestor）">最近公共祖先（Lowest Common  Ancestor）</a><time datetime="2025-03-16T12:10:27.649Z" title="发表于 2025-03-16 20:10:27">2025-03-16</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2025/03/16/%E5%9B%BE%E8%AE%BA/" title="图论">图论</a><time datetime="2025-03-16T12:10:27.647Z" title="发表于 2025-03-16 20:10:27">2025-03-16</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2025/03/16/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0_2024.9.24/" title="算法学习笔记_2024.9.24">算法学习笔记_2024.9.24</a><time datetime="2025-03-16T12:10:27.642Z" title="发表于 2025-03-16 20:10:27">2025-03-16</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2019 - 2025 By kanoi</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo 7.3.0</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly 5.3.5</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="日间和夜间模式切换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><div class="js-pjax"></div><div class="aplayer no-destroy" data-id="8199540985" data-server="netease" data-type="playlist" data-fixed="true" data-mini="true" data-listFolded="false" data-order="random" data-preload="auto" data-autoplay="true" muted></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.js"></script><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/metingjs/dist/Meting.min.js"></script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
